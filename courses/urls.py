@@ -1,5 +1,16 @@
+"""Packages for the Courses API V1"""
 from django.urls import path
+
+"""Packages for both V1 and V2"""
 from courses.views import CourseAPIView, RatingAPIView, CoursesAPIView, RatingsAPIView
+
+"""Packages for the Courses API V2"""
+from rest_framework.routers import SimpleRouter
+from courses.views import CourseViewSet, RatingViewSet
+
+router = SimpleRouter()
+router.register('courses', CourseViewSet)
+router.register('ratings', RatingViewSet)
 
 urlpatterns = [ # Endpoints
     path('courses/', CoursesAPIView.as_view(), name='courses'),
